@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "School Output",
+      "setup": "",
+      "run": "./school.sh",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
