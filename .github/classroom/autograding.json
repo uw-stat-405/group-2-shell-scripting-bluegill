@@ -5,7 +5,7 @@
       "setup": "",
       "run": "./school.sh",
       "input": "",
-      "output": "",
+      "output": "24154170100",
       "comparison": "exact",
       "timeout": 10,
       "points": 1
