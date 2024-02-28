@@ -32,7 +32,7 @@ jobs:
           echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
       - name: Bash running
         run: |
-          ./log.sh
+          ./test_suite/log.sh
 
 # jobs:
 #   build:
