@@ -20,6 +20,9 @@ jobs:
           echo "::group::My title"
           echo "Inside group"
           echo "::endgroup::"
+          echo "::error file=app.js::school.sh must use 'cat' statement"
+          echo "::notice file=school.sh::school.sh must use 'cat' statement"
+          echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
       - name: Mark It
         run: |
           echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
