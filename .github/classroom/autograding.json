@@ -1,0 +1,25 @@
+{
+  "tests": [
+    {
+      "name": "School Output",
+      "setup": "./test_suite/setup_school.sh",
+      "run": "./school.sh",
+      "input": "",
+      "output": "24154170100",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "School Requirements",
+      "setup": "./test_suite/setup_school.sh",
+      "run": "./test_suite/check_school.sh",
+      "input": "",
+      "output": "",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
+
