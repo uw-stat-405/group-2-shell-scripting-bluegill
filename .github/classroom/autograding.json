@@ -2,10 +2,17 @@
   "tests": [
     {
       "name": "School Output",
+<<<<<<< HEAD
       "setup": "./test_suite/setup_school.sh",
       "run": "./school.sh",
       "input": "",
       "output": "24154170100",
+=======
+      "setup": "",
+      "run": "./school.sh",
+      "input": "",
+      "output": "",
+>>>>>>> pr3
       "comparison": "exact",
       "timeout": 10,
       "points": 1
