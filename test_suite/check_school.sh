@@ -13,8 +13,8 @@ catch() {
 
 # check for shebang
 if IFS= LC_ALL=C read -rn2 -d '' shebang < school.sh && [ "$shebang" != '#!' ]; then
-  echo "::error file=school.sh::Script must contain shebang"
-	echo '### Hello world! :rocket:' >> "${GITHUB_STEP_SUMMARY}"
+    echo "::error file=school.sh::Script must contain shebang"
+	# echo '### Hello world! :rocket:' >> "${GITHUB_STEP_SUMMARY}"
 	exit 1
 fi
 
@@ -23,7 +23,8 @@ COMMANDS=("cat" "grep" "cut" "Property_Tax_Roll.csv")
 
 for cmd in ${COMMANDS[@]}; do
 	if [[ -z $(awk -v cmd="$cmd" '$0 ~ cmd && !/\s*[#]/' school.sh) ]]; then
-		echo "You must use '$cmd' in school.sh"
+		# echo "You must use '$cmd' in school.sh"
+        echo "::error file=school.sh::You must use $cmd in your script"
 	fi
 done
 
@@ -32,7 +33,7 @@ catch schoolOut schoolErr ./school.sh
 if [[ ! -z $schoolErr ]]; then
 	echo "script has error"
 elif [[ $schoolOut != 24154170100 ]]; then
-	echo "script output incorrect"
+	echo "::error file=school.sh::school.sh produced incorrect output"
 	diff -y <(echo "24154170100") <(echo "$schoolOut")
 	exit 1
 fi
