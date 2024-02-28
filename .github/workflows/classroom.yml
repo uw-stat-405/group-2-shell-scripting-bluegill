@@ -33,6 +33,9 @@ jobs:
       - name: Bash running
         run: |
           ./test_suite/log.sh
+      - name: Check School
+        run: |
+          ./test_suite/check_school.sh
 
 # jobs:
 #   build:
