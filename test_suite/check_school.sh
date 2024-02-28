@@ -13,7 +13,8 @@ catch() {
 
 # check for shebang
 if IFS= LC_ALL=C read -rn2 -d '' shebang < school.sh && [ "$shebang" != '#!' ]; then
-  echo "school.sh must start with shebang"
+  echo "::error file=school.sh::Script must contain shebang"
+	exit 1
 fi
 
 # check usage of commands
