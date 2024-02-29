@@ -34,8 +34,12 @@ jobs:
         run: |
           ./test_suite/log.sh
       - name: Check School
+        id: school
         run: |
           ./test_suite/check_school.sh
+      - name: Get Points
+        run: |
+          echo "::notice::Number is ${{ steps.school.outputs.points_school }}/8"
 
 # jobs:
 #   build:

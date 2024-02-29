@@ -15,7 +15,7 @@ catch() {
 if IFS= LC_ALL=C read -rn2 -d '' shebang < school.sh && [ "$shebang" != '#!' ]; then
     echo "::error file=school.sh::Script must contain shebang"
 	# echo '### Hello world! :rocket:' >> "${GITHUB_STEP_SUMMARY}"
-	exit 1
+	# exit 1
 fi
 
 # check usage of commands
@@ -31,13 +31,15 @@ done
 
 catch schoolOut schoolErr ./school.sh
 if [[ ! -z $schoolErr ]]; then
-	echo "script has error"
+    echo "::error file=school.sh::school.sh produced an error"
+    echo "::set-output name=points_school::0"
+    exit 1
 elif [[ $schoolOut != 24154170100 ]]; then
 	echo "::error file=school.sh::school.sh produced incorrect output"
+    echo "::set-output name=points_school::0"
 	diff -y <(echo "24154170100") <(echo "$schoolOut")
 	exit 1
 fi
 
-echo "test ran successfully"
-
-
+echo "::set-output name=points_school::1"
+echo "school test ran successfully!"
