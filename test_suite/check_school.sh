@@ -32,11 +32,12 @@ done
 catch schoolOut schoolErr ./school.sh
 if [[ ! -z $schoolErr ]]; then
     echo "::error file=school.sh::school.sh produced an error"
-    echo "::set-output name=points_school::0"
+    # echo "::set-output name=points_school::0"
+    echo "points_school=0" > "$GITHUB_OUTPUT"
     exit 1
 elif [[ $schoolOut != 24154170100 ]]; then
 	echo "::error file=school.sh::school.sh produced incorrect output"
-    echo "::set-output name=points_school::0"
+    echo "points_school=0" > "$GITHUB_OUTPUT"
 	diff -y <(echo "24154170100") <(echo "$schoolOut")
 	exit 1
 fi
