@@ -36,6 +36,7 @@ done
 schoolOut="" # linter
 schoolErr="" # linter
 catch schoolOut schoolErr ./school.sh
+
 if [[ -n $schoolErr ]]; then
     echo "::error file=school.sh::school.sh produced an error"
     # echo "::set-output name=points_school::0"
