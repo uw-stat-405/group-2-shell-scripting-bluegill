@@ -2,7 +2,7 @@
 
 
 # one liner
-# seq 1000 2000 | awk '/^[01]+$/ {sum += $0} END {print sum}'
+seq 1000 2000 | awk '/^[01]+$/ {sum += $0} END {print sum}'
 
 # pipe into brace expression
 # seq 1000 2000 | \
