@@ -18,8 +18,6 @@ points_school=1
 if IFS= LC_ALL=C read -rn2 -d '' shebang < school.sh && [ "$shebang" != '#!' ]; then
     echo "::error file=school.sh::Script must contain shebang"
     points_school=0
-	# echo '### Hello world! :rocket:' >> "${GITHUB_STEP_SUMMARY}"
-	# exit 1
 fi
 
 # check usage of commands

@@ -2,6 +2,13 @@
 
 points_rm=1
 
+# static checks
+# check for shebang
+if IFS= LC_ALL=C read -rn2 -d '' shebang < rm_n.sh && [ "$shebang" != '#!' ]; then
+    echo "::error file=rm_n.sh::Script must contain shebang"
+    points_rm=0
+fi
+
 # # runtime checks
 # # check usage command
 ARGS=("" "one" "1 2 3")
@@ -36,4 +43,4 @@ elif [[ $(find /tmp/folderrm -type f | wc -l | tr -d ' ') != 34 ]]; then
 fi
 
 echo "points_rm=$points_rm" >> "$GITHUB_OUTPUT"
-echo "rm_n test finished running"
+echo "checked rm_n.sh"
