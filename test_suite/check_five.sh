@@ -10,7 +10,7 @@ if [[ $(awk 'mkdir && !/\s*[#]/' five_dirs.sh | wc -l) -gt 4 ]]; then
 fi
 
 # runtime checks
-if ! ../five_dirs.sh; then
+if ! five_dirs.sh; then
     echo "::error file=five_dirs.sh::five_dirs.sh had non-zero exit code 0"
     echo "points_school=0" >> "$GITHUB_OUTPUT"
     exit 1
