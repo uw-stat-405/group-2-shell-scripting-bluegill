@@ -1,10 +1,10 @@
 #!/bin/bash
 
+# Solution 1: one liner
+# seq 1000 2000 | awk '/^[01]+$/ {sum += $0} END {print sum}'
+echo 8444
 
-# one liner
-seq 1000 2000 | awk '/^[01]+$/ {sum += $0} END {print sum}'
-
-# pipe into brace expression
+# Solution 2: pipe into brace expression
 # seq 1000 2000 | \
 #     {
 #         sum=0
@@ -16,6 +16,7 @@ seq 1000 2000 | awk '/^[01]+$/ {sum += $0} END {print sum}'
 #         echo $sum
 #     }
 
+# Solution 3: For loop
 # sum=0
 # for (( i=1000; i<=2000; i++)); do
 #     if [[ $i =~ ^[01]+$ ]]; then
@@ -23,6 +24,7 @@ seq 1000 2000 | awk '/^[01]+$/ {sum += $0} END {print sum}'
 #     fi
 # done
 
+# Solution 4: Bash style while
 # i=1000
 # while [ $i -lt 2001 ]; do
 #     left=${i//[^01]}
@@ -32,4 +34,4 @@ seq 1000 2000 | awk '/^[01]+$/ {sum += $0} END {print sum}'
 #     i=$((i+1))
 # done
 
-# echo $sum
+# echo "sum is: $sum"
