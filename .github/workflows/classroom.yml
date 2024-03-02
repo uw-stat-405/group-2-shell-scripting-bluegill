@@ -36,6 +36,7 @@ jobs:
       - name: Check School
         id: school
         run: |
+          ./test_suite/setup_school.sh
           ./test_suite/check_school.sh
       - name: Check Five
         id: five

@@ -38,6 +38,7 @@ schoolErr="" # linter
 catch schoolOut schoolErr ./school.sh
 
 if [[ -n $schoolErr ]]; then
+    echo "$schoolErr"
     echo "::error file=school.sh::school.sh produced an error"
     # echo "::set-output name=points_school::0"
     echo "points_school=0" >> "$GITHUB_OUTPUT"
