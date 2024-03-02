@@ -13,9 +13,6 @@ total=$((RM + SCHOOL))
     echo "| rm_n.sh                       | ${RM}/1     |  $rm_emoji     |"
     echo "|-------------------------------|--------|--------|"
     echo "| Total                     | $total  |  $total_emoji     |"
-    echo "| ${steps.mean.outputs.points_mean}||"
-    echo "| ${{steps.mean.outputs.points_mean}}||"
-    echo "| $rm ||"
 } >> "$GITHUB_STEP_SUMMARY"
 
 # echo "Shell Scripting Points" >> "$GITHUB_STEP_SUMMARY"
