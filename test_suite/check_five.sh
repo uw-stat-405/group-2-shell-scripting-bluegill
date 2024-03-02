@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# initialize points
+points_five=1
+
 # static checks
 # check number of calls to mkdir
-
 if [[ $(awk 'mkdir && !/\s*[#]/' five_dirs.sh | wc -l) -gt 4 ]]; then
     echo "checking number of mkdir calls made"
     echo "::error file=five_dirs.sh::Too many mkdir statements detected"
@@ -12,7 +14,7 @@ fi
 # runtime checks
 if ! ./five_dirs.sh; then
     echo "::error file=five_dirs.sh::five_dirs.sh had non-zero exit code 0"
-    echo "points_school=0" >> "$GITHUB_OUTPUT"
+    echo "points_five=0" >> "$GITHUB_OUTPUT"
     exit 1
 fi
 
@@ -27,6 +29,7 @@ for ((i=0; i<${#FILES[@]}; i++));do
     if [[ ! -f $file ]]; then
         echo "::error file=five_dirs.sh::$file is missing"
         points_five=0
+        exit 1
     fi
 
     # check contents of file
@@ -47,4 +50,4 @@ if [[ -f five/dir5/file5 ]]; then
 fi
 
 echo "points_five=$points_five" >> "$GITHUB_OUTPUT"
-echo "school test finished running"
+echo "five test finished running"

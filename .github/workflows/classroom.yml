@@ -42,9 +42,13 @@ jobs:
         id: five
         run: |
           ./test_suite/check_five.sh
+      - name: Check rm_n
+        id: rm
+        run: |
+          ./test_suite/check_rm_n.sh
       - name: Get Points
         run: |
-          echo "::notice::School points is ${{ steps.school.outputs.points_school }}. Five points is ${{ steps.five.outputs.points_five }}"
+          echo "::notice::School points is ${{ steps.school.outputs.points_school }}. Five points is ${{ steps.five.outputs.points_five }}. Rm points is ${{steps.rm.outputs.points_rm }}"
 
 # jobs:
 #   build:
