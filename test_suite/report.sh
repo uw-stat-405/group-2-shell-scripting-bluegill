@@ -1,18 +1,21 @@
 #!/bin/bash
 
-[[ $INPUT_SCHOOL -eq 1 ]] && school_emoji=✅ || school_emoji=❌
-[[ $INPUT_RM -eq 1 ]] && rm_emoji=✅ || rm_emoji=❌
+[[ $SCHOOL -eq 1 ]] && school_emoji=✅ || school_emoji=❌
+[[ $RM -eq 1 ]] && rm_emoji=✅ || rm_emoji=❌
 
-total=$((INPUT_RM + INPUT_SCHOOL))
+total=$((RM + SCHOOL))
 [[ $total -eq 2 ]] && total_emoji=✅ || total_emoji=❌
 
 {
     echo "| Script Name                   | Points | Status |"
     echo "|-------------------------------|--------|--------|"
-    echo "| school.sh                     | ${INPUT_SCHOOL}/1 |  $school_emoji |"
-    echo "| rm_n.sh                       | ${INPUT_RM}/1     |  $rm_emoji     |"
+    echo "| school.sh                     | ${SCHOOL}/1 |  $school_emoji |"
+    echo "| rm_n.sh                       | ${RM}/1     |  $rm_emoji     |"
     echo "|-------------------------------|--------|--------|"
     echo "| Total                     | $total  |  $total_emoji     |"
+    echo "| ${steps.mean.outputs.points_mean}||"
+    echo "| ${{steps.mean.outputs.points_mean}}||"
+    echo "| $rm ||"
 } >> "$GITHUB_STEP_SUMMARY"
 
 # echo "Shell Scripting Points" >> "$GITHUB_STEP_SUMMARY"
