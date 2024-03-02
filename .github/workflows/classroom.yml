@@ -10,51 +10,10 @@ permissions:
   contents: read
 
 jobs:
-  first:
-    name: Homework Grade
+  build:
+    name: Autograding
     runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
     steps:
       - uses: actions/checkout@v4
-      - name: Check School
-        id: school
-        continue-on-error: true
-        run: |
-          ./test_suite/setup_school.sh
-          ./test_suite/check_school.sh
-      - name: Check Five
-        id: five
-        continue-on-error: true
-        run: |
-          ./test_suite/check_five.sh
-      - name: Check rm_n
-        id: rm
-        continue-on-error: true
-        run: |
-          ./test_suite/check_rm_n.sh
-      - name: Check digits
-        id: digits
-        continue-on-error: true
-        run: |
-          ./test_suite/check_digits.sh
-      - name: Check mean
-        id: mean
-        continue-on-error: true
-        run: |
-          ./test_suite/check_mean.sh
-      - name: Generate Report
-        env:
-          SCHOOL: ${{steps.school.outputs.points_school}}
-          RM: ${{steps.rm.outputs.points_rm}}
-          FIVE: ${{steps.five.outputs.points_five}}
-          DIGITS: ${{steps.digits.outputs.points_digits}}
-          MEAN: ${{steps.mean.outputs.points_mean}}
-        run: |
-          ./test_suite/report.sh
-        # run: |
-        #   echo "Shell Scripting Points" >> $GITHUB_STEP_SUMMARY
-        #   echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
-        #   echo "- school.sh: ${{ steps.school.outputs.points_school }}/1" >> $GITHUB_STEP_SUMMARY
-        #   echo "- five_dirs.sh: ${{ steps.five.outputs.points_five }}/1" >> $GITHUB_STEP_SUMMARY
-        #   echo "- rm_n.sh: ${{ steps.rm.outputs.points_rm }}/1" >> $GITHUB_STEP_SUMMARY
-        #   echo "- digits.sh: ${{ steps.digits.outputs.points_digits }}/1" >> $GITHUB_STEP_SUMMARY
-        #   echo "- mean.sh: ${{ steps.mean.outputs.points_mean }}/1" >> $GITHUB_STEP_SUMMARY
+      - uses: education/autograding@v1
