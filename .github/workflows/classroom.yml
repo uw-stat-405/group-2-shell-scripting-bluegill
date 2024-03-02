@@ -43,8 +43,8 @@ jobs:
           ./test_suite/check_mean.sh
       - name: Generate Report
         env:
-          school: ${{steps.school.outputs.points_school}}
-          rm: ${{steps.rm.outputs.points_rm}}
+          SCHOOL: ${{steps.school.outputs.points_school}}
+          RM: ${{steps.rm.outputs.points_rm}}
         run: |
           ./test_suite/report.sh
         # run: |
