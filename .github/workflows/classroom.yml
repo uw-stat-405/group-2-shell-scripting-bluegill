@@ -42,11 +42,11 @@ jobs:
         run: |
           ./test_suite/check_mean.sh
       - name: Generate Report
-        run: |
-          ./test_suite/report.sh
-        with:
+        env:
           school: ${{steps.school.outputs.points_school}}
           rm: ${{steps.rm.outputs.points_rm}}
+        run: |
+          ./test_suite/report.sh
         # run: |
         #   echo "Shell Scripting Points" >> $GITHUB_STEP_SUMMARY
         #   echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
