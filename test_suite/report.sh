@@ -20,6 +20,10 @@ total=$((RM + SCHOOL + DIGITS + FIVE + MEAN))
     echo "| Total                         | $total/5            |  $total_emoji     |"
 } >> "$GITHUB_STEP_SUMMARY"
 
+if [[ $total -ne 5 ]]; then
+    exit 1
+fi
+
 # echo "Shell Scripting Points" >> "$GITHUB_STEP_SUMMARY"
 # echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
 # echo "- school.sh: ${{ steps.school.outputs.points_school }}/1" >> "$GITHUB_STEP_SUMMARY"
