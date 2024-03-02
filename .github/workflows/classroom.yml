@@ -15,24 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # - name: Annotate
-      #   run: |
-      #     echo "::group::My title"
-      #     echo "Inside group"
-      #     echo "::endgroup::"
-      #     echo "::error file=app.js::school.sh must use 'cat' statement"
-      #     echo "::notice file=school.sh::school.sh must use 'cat' statement"
-      #     echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-      - name: Mark It
-        run: |
-          echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
-          echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
-          echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
-          echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
-      # - name: Bash running
-      #   run: |
-      #     ./test_suite/log.sh
       - name: Check School
         id: school
         run: |
@@ -54,25 +36,12 @@ jobs:
         id: mean
         run: |
           ./test_suite/check_mean.sh
-      - name: Get Points
+      - name: Mark It
         run: |
-          echo "::notice::School points is ${{ steps.school.outputs.points_school }}. Five points is ${{ steps.five.outputs.points_five }}. Rm points is ${{steps.rm.outputs.points_rm }}. Digit points is ${{ steps.digits.outputs.points_digits }}. Mean points is ${{ steps.mean.outputs.points_mean }}."
-
-# jobs:
-#   build:
-#     name: Autograding
-#     runs-on: ubuntu-latest
-#     if: github.actor != 'github-classroom[bot]'
-#     steps:
-#       - uses: actions/checkout@v4
-#       - uses: education/autograding@v1
-# 			- run: |
-#             echo "::group::My title"
-#             echo "Inside group"
-#             echo "::endgroup::"
-# 			- run: |
-# 						echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
-# 						echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
-# 						echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
-# 						echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
-# 						echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
+          echo "Shell Scripting Points" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+          echo "- school.sh: ${{ steps.school.outputs.points_school }}/1" >> $GITHUB_STEP_SUMMARY
+          echo "- five_dirs.sh: ${{ steps.five.outputs.points_five }}/1" >> $GITHUB_STEP_SUMMARY
+          echo "- rm_n.sh: ${{ steps.rm.outputs.points_rm }}/1" >> $GITHUB_STEP_SUMMARY
+          echo "- digits.sh: ${{ steps.digits.outputs.points_digits }}/1" >> $GITHUB_STEP_SUMMARY
+          echo "- mean.sh: ${{ steps.mean.outputs.points_mean }}/1" >> $GITHUB_STEP_SUMMARY
