@@ -37,9 +37,13 @@ jobs:
         id: school
         run: |
           ./test_suite/check_school.sh
+      - name: Check Five
+        id: five
+        run: |
+          ./test_suite/check_five.sh
       - name: Get Points
         run: |
-          echo "::notice::Number is ${{ steps.school.outputs.points_school }}/8"
+          echo "::notice::School points is ${{ steps.school.outputs.points_school }}. Five points is ${{ steps.five.outputs.points_five }}"
 
 # jobs:
 #   build:
