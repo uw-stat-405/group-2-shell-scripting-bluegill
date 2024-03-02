@@ -53,7 +53,7 @@ jobs:
       - name: Check mean
         id: mean
         run: |
-          ./test_suite/mean.sh
+          ./test_suite/check_mean.sh
       - name: Get Points
         run: |
           echo "::notice::School points is ${{ steps.school.outputs.points_school }}. Five points is ${{ steps.five.outputs.points_five }}. Rm points is ${{steps.rm.outputs.points_rm }}. Digit points is ${{ steps.digits.outputs.points_digits }}. Mean points is ${{ steps.mean.outputs.points_mean }}."
