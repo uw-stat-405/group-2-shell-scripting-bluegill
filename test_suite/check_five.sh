@@ -3,7 +3,7 @@
 # static checks
 # check number of calls to mkdir
 
-if [[ $(awk 'mkdir && !/\s*[#]/' ../five_dirs.sh | wc -l) -gt 4 ]]; then
+if [[ $(awk 'mkdir && !/\s*[#]/' five_dirs.sh | wc -l) -gt 4 ]]; then
     echo "checking number of mkdir calls made"
     echo "::error file=five_dirs.sh::Too many mkdir statements detected"
     points_five=0
@@ -17,7 +17,7 @@ if ! ../five_dirs.sh; then
 fi
 
 # check directories
-FILES=($(seq 1 4 | xargs -I{} echo ../five/dir{}/file{}))
+FILES=($(seq 1 4 | xargs -I{} echo five/dir{}/file{}))
 
 # echo ${#FILES[@]}
 
