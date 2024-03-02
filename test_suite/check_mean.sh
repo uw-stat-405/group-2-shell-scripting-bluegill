@@ -31,12 +31,15 @@ mean5std=$(./mean.sh 5 < mtcars.csv)
 
 if [[ ! $mean3 =~ 6\.[12] ]]; then
     echo "col 3 mean incorrect, expected 6.188"
+    echo "::error file=mean.sh::Incorrect output for './mean.sh 3 mtcars.csv'"
     points_mean=0
 elif [[ ! $mean4 =~ 23[01] ]]; then
     echo "col 4 mean incorrect, expected 230.722"
+    echo "::error file=mean.sh::Incorrect output for './mean.sh 4 mtcars.csv'"
     points_mean=0
 elif [[ ! $mean5std =~ 14[67] ]]; then
     echo "col 5 mean from stdin incorrect, expected 146.688"
+    echo "::error file=mean.sh::Incorrect output for './mean.sh 5 < mtcars.csv'"
     points_mean=0
 fi
 
