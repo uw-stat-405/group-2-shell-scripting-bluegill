@@ -4,6 +4,12 @@
 points_five=1
 
 # static checks
+# check for shebang
+if IFS= LC_ALL=C read -rn2 -d '' shebang < five_dirs.sh && [ "$shebang" != '#!' ]; then
+    echo "::error file=school.sh::Script must contain shebang"
+    points_five=0
+fi
+
 # check number of calls to mkdir
 if [[ $(awk 'mkdir && !/\s*[#]/' five_dirs.sh | wc -l) -gt 4 ]]; then
     echo "checking number of mkdir calls made"
