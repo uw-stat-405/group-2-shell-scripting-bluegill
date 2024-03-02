@@ -1,18 +1,23 @@
 #!/bin/bash
 
 [[ $SCHOOL -eq 1 ]] && school_emoji=✅ || school_emoji=❌
+[[ $FIVE -eq 1 ]] && five_emoji=✅ || five_emoji=❌
 [[ $RM -eq 1 ]] && rm_emoji=✅ || rm_emoji=❌
+[[ $DIGITS -eq 1 ]] && digits_emoji=✅ || digits_emoji=❌
+[[ $MEAN -eq 1 ]] && mean_emoji=✅ || mean_emoji=❌
 
-total=$((RM + SCHOOL))
-[[ $total -eq 2 ]] && total_emoji=✅ || total_emoji=❌
+total=$((RM + SCHOOL + DIGITS + FIVE + MEAN))
+[[ $total -eq 5 ]] && total_emoji=✅ || total_emoji=❌
 
 {
     echo "| Script Name                   | Points | Status |"
     echo "|-------------------------------|--------|--------|"
-    echo "| school.sh                     | ${SCHOOL}/1 |  $school_emoji |"
-    echo "| rm_n.sh                       | ${RM}/1     |  $rm_emoji     |"
-    echo "|-------------------------------|--------|--------|"
-    echo "| Total                     | $total  |  $total_emoji     |"
+    echo "| school.sh                     | ${SCHOOL}/1     |  $school_emoji |"
+    echo "| five_dirs.sh                  | ${FIVE}/1       |  $five_emoji     |"
+    echo "| rm_n.sh                       | ${RM}/1         |  $rm_emoji     |"
+    echo "| digits.sh                     | ${DIGITS}/1     |  $digits_emoji     |"
+    echo "| mean.sh                       | ${MEAN}/1       |  $mean_emoji     |"
+    echo "| Total                         | $total/5            |  $total_emoji     |"
 } >> "$GITHUB_STEP_SUMMARY"
 
 # echo "Shell Scripting Points" >> "$GITHUB_STEP_SUMMARY"

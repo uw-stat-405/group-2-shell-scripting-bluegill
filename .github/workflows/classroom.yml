@@ -45,6 +45,9 @@ jobs:
         env:
           SCHOOL: ${{steps.school.outputs.points_school}}
           RM: ${{steps.rm.outputs.points_rm}}
+          FIVE: ${{steps.five.outputs.points_five}}
+          DIGITS: ${{steps.digits.outputs.points_digits}}
+          MEAN: ${{steps.mean.outputs.points_mean}}
         run: |
           ./test_suite/report.sh
         # run: |
